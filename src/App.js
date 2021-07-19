@@ -6,6 +6,7 @@ import Home from './components/Home';
 import NotFound from './components/NotFound';
 import '../node_modules/xwing-miniatures-font/dist/xwing-miniatures.css';
 import './index.css';
+import ShipList from './components/ShipList';
 
 function App() {
 	return (
@@ -22,7 +23,7 @@ function App() {
 					<Nav className='flex-column'>
 						<Nav.Item>
 							<Nav.Link as={NavLink} to='/all'>
-								<span>
+								<span className='icon-size'>
 									<i className='xwing-miniatures-font xwing-miniatures-font-first-player-1-outline'></i>
 									<strong> All Factions</strong>
 								</span>
@@ -36,7 +37,9 @@ function App() {
 					<Route exact path='/'>
 						<Home />
 					</Route>
-					<Route path='/all'>List of Ships</Route>
+					<Route path='/all'>
+						<ShipList />
+					</Route>
 					<Route path='*'>
 						<NotFound />
 					</Route>

@@ -25,10 +25,14 @@
 	left: 550px;
 }
 
-.note-textarea {
+.ship-textarea {
 	height: 500px;
 }
 
-.note-text-display {
+.ship-text-display {
 	white-space: pre-line;
+}
+
+.icon-size {
+	font-size: 1.25rem;
 }
