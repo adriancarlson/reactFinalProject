@@ -3,6 +3,7 @@ import { Switch, Route, NavLink, useRouteMatch } from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav';
 import Button from 'react-bootstrap/Button';
 import { getShips } from '../services/ShipService';
+import Ship from './Ship';
 
 const ShipList = () => {
 	const match = useRouteMatch();
@@ -16,6 +17,12 @@ const ShipList = () => {
 	useEffect(() => {
 		reloadShips();
 	}, []);
+
+	const getShipById = (shipId) => {
+		console.log(shipId);
+		return ships.find((s) => s._id === shipId);
+	};
+
 	return (
 		<React.Fragment>
 			<div className='sidebar inner-sidebar p-3'>
@@ -38,7 +45,9 @@ const ShipList = () => {
 			</div>
 			<div className='main inner-main px-2'>
 				<Switch>
-					<Route path={`${match.url}/:shipId`}>Here is the ship information</Route>
+					<Route path={`${match.url}/:shipId`}>
+						<Ship getShipById={getShipById} />
+					</Route>
 					<Route path={`${match.url}`}>
 						<p className='m-3 mt-5 text-center'>Please select a Ship to view details.</p>
 					</Route>
