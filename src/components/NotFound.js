@@ -6,7 +6,7 @@ const NotFound = () => {
 			<div className='row'>
 				<div className='col text-center'>
 					<h2 className='mb-4'>No Ships to be found!</h2>
-					<p>Sorry buy you type the wrong coordinates into your Navi-computer. Fleet not found!</p>
+					<p>Sorry but you typed the wrong coordinates into your Navi-computer. Fleet not found!</p>
 				</div>
 			</div>
 		</div>
