@@ -20,7 +20,7 @@ const ShipList = () => {
 
 	const getShipById = (shipId) => {
 		console.log(shipId);
-		return ships.find((s) => s._id === shipId);
+		return ships.find((s) => s._id == shipId);
 	};
 
 	return (
