@@ -1,5 +1,6 @@
 import React from 'react';
 import { Switch, Route, Redirect, useRouteMatch, useParams } from 'react-router-dom';
+import ShipView from './ShipView';
 
 const Ship = ({ getShipById }) => {
 	const match = useRouteMatch();
@@ -14,7 +15,9 @@ const Ship = ({ getShipById }) => {
 			) : (
 				<Switch>
 					<Route path={`${match.path}/edit`}>Ship Form</Route>
-					<Route path={`${match.path}`}>Ship</Route>
+					<Route path={`${match.path}`}>
+						<ShipView key={ship._id} ship={ship} />
+					</Route>
 				</Switch>
 			)}
 		</div>
