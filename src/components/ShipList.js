@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Switch, Route, NavLink, useRouteMatch } from 'react-router-dom';
+import { Switch, Route, NavLink, useRouteMatch, useHistory } from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav';
 import Button from 'react-bootstrap/Button';
-import { getShips } from '../services/ShipService';
+import { getShips, createShip, deleteShip, updateShip } from '../services/ShipService';
 import Ship from './Ship';
 
 const ShipList = () => {
 	const match = useRouteMatch();
+	const history = useHistory();
 
 	const [ships, setShips] = useState([]);
 
@@ -23,13 +24,31 @@ const ShipList = () => {
 		return ships.find((s) => s._id === shipId);
 	};
 
+	const handleCreateShip = async () => {
+		const ship = await createShip({ title: 'New Ship', name: '', pilot: '', faction: '' });
+		await reloadShips();
+		history.push(`/all/${ship._id}/edit`);
+	};
+
+	const handleDeleteShip = async (ship) => {
+		await deleteShip(ship._id);
+		await reloadShips();
+		history.push(`/all`);
+	};
+
+	const handleUpdateShip = async (ship, newData) => {
+		await updateShip(ship._id, { ...newData });
+		await reloadShips();
+		history.push(`/all/${ship._id}`);
+	};
+
 	return (
 		<React.Fragment>
 			<div className='sidebar inner-sidebar p-3'>
 				<div className='position-sticky pt-2'>
 					<div className='d-grid'>
-						<Button variant='warning' className='mb-3 float-end'>
-							+ New Ship
+						<Button variant='warning' className='mb-3 float-end' onClick={handleCreateShip}>
+							+ New Ship <i className='xwing-miniatures-font xwing-miniatures-font-title'></i>
 						</Button>
 					</div>
 					<Nav variant='pills' className='flex-column'>
@@ -46,7 +65,7 @@ const ShipList = () => {
 			<div className='main inner-main px-2'>
 				<Switch>
 					<Route path={`${match.url}/:shipId`}>
-						<Ship getShipById={getShipById} />
+						<Ship getShipById={getShipById} onDeleteShip={handleDeleteShip} onUpdateShip={handleUpdateShip} />
 					</Route>
 					<Route path={`${match.url}`}>
 						<p className='m-3 mt-5 text-center'>Please select a Ship to view details.</p>
