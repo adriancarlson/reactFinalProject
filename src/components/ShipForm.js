@@ -18,19 +18,16 @@ const ShipForm = ({ ship, onDeleteShip, onUpdateShip }) => {
 	return (
 		<React.Fragment>
 			<div className='row'>
-				<div className='col d-flex'>
+				<div className='col'>
+					<label htmlFor='titleInput' className='form-label mt-3'>
+						Title:
+					</label>
 					<input type='text' id='titleInput' className='form-control' value={titleValue} onChange={handleTitleChange} />
-					<Button variant='danger' className='ms-2 text-nowrap' onClick={() => onDeleteShip(ship)}>
-						Delete Ship
-					</Button>
-					<Button variant='primary' className='ms-2 text-nowrap' onClick={handleSave}>
-						Save Ship
-					</Button>
 				</div>
 			</div>
 			<div className='row'>
 				<div className='col'>
-					<label for='nameInput' className='form-label mt-3'>
+					<label htmlFor='nameInput' className='form-label mt-3'>
 						Name:
 					</label>
 					<input type='text' id='nameInput' className='form-control' value={nameValue} onChange={handleNameChange} />
@@ -38,7 +35,7 @@ const ShipForm = ({ ship, onDeleteShip, onUpdateShip }) => {
 			</div>
 			<div className='row'>
 				<div className='col'>
-					<label for='pilotInput' className='form-label mt-3'>
+					<label htmlFor='pilotInput' className='form-label mt-3'>
 						Pilot:
 					</label>
 					<input type='text' id='pilotInput' className='form-control' value={pilotValue} onChange={handlePilotChange} />
@@ -46,10 +43,20 @@ const ShipForm = ({ ship, onDeleteShip, onUpdateShip }) => {
 			</div>
 			<div className='row'>
 				<div className='col'>
-					<label for='factionInput' className='form-label mt-3'>
+					<label htmlFor='factionInput' className='form-label mt-3'>
 						Faction:
 					</label>
 					<input type='text' id='factionInput' className='form-control' value={factionValue} onChange={handleFactionChange} />
+				</div>
+			</div>
+			<div className='row'>
+				<div className='col mt-3'>
+					<Button variant='primary' className='ms-2 text-nowrap float-end' onClick={handleSave}>
+						Save Ship
+					</Button>
+					<Button variant='danger' className='ms-2 text-nowrap float-end' onClick={() => onDeleteShip(ship)}>
+						Delete Ship
+					</Button>
 				</div>
 			</div>
 		</React.Fragment>

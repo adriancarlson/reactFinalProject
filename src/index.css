@@ -4,7 +4,7 @@
 	top: 55px;
 	bottom: 0;
 	left: 0;
-	z-index: 100;
+	z-index: -100;
 	box-shadow: inset -1px 0 0 rgb(0 0 0 / 10%);
 }
 
@@ -34,5 +34,11 @@
 }
 
 .icon-size {
+	font-size: 1.4rem;
+	vertical-align: middle;
+}
+
+.faction-icon-size {
 	font-size: 1.25rem;
+	vertical-align: middle;
 }

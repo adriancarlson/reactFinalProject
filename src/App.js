@@ -7,23 +7,36 @@ import NotFound from './components/NotFound';
 import '../node_modules/xwing-miniatures-font/dist/xwing-miniatures.css';
 import './index.css';
 import ShipList from './components/ShipList';
+import About from './components/About';
+import Contact from './components/Contact';
 
 function App() {
 	return (
 		<React.Fragment>
-			<Navbar bg='dark' variant='dark' sticky='top' expand='true' className='flex-md-nowrap'>
+			<Navbar collapseOnSelect expand='lg' bg='dark' variant='dark'>
 				<Navbar.Brand as={NavLink} to='/' className='ms-3'>
 					<i className='xwing-miniatures-font xwing-miniatures-font-helmet-rebel'></i>
 					Star Wars Squad Builder
 				</Navbar.Brand>
-				<Nav></Nav>
+				<Navbar.Toggle aria-controls='responsive-navbar-nav' />
+				<Navbar.Collapse id='responsive-navbar-nav'>
+					<Nav className='me-auto'></Nav>
+					<Nav>
+						<Nav.Link as={NavLink} to='/about' className='me-3'>
+							About
+						</Nav.Link>
+						<Nav.Link as={NavLink} to='/contact' className='me-3'>
+							Contact
+						</Nav.Link>
+					</Nav>
+				</Navbar.Collapse>
 			</Navbar>
 			<div className='bg-light sidebar'>
 				<div className='position-sticky pt-3'>
 					<Nav className='flex-column'>
 						<Nav.Item>
 							<Nav.Link as={NavLink} to='/all'>
-								<span className='icon-size'>
+								<span className='faction-icon-size'>
 									<i className='xwing-miniatures-font xwing-miniatures-font-first-player-1-outline'></i>
 									<strong> All Factions</strong>
 								</span>
@@ -39,6 +52,12 @@ function App() {
 					</Route>
 					<Route path='/all'>
 						<ShipList />
+					</Route>
+					<Route path='/about'>
+						<About />
+					</Route>
+					<Route path='/contact'>
+						<Contact />
 					</Route>
 					<Route path='*'>
 						<NotFound />

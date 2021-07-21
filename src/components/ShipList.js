@@ -47,8 +47,11 @@ const ShipList = () => {
 			<div className='sidebar inner-sidebar p-3'>
 				<div className='position-sticky pt-2'>
 					<div className='d-grid'>
-						<Button variant='warning' className='mb-3 float-end' onClick={handleCreateShip}>
-							+ New Ship <i className='xwing-miniatures-font xwing-miniatures-font-title'></i>
+						<Button variant='warning' className='mb-3 float-end p-0 font-weight-bold' onClick={handleCreateShip}>
+							+ New Ship
+							<span className='icon-size mx-1'>
+								<i className='xwing-miniatures-font xwing-miniatures-font-title'></i>
+							</span>
 						</Button>
 					</div>
 					<Nav variant='pills' className='flex-column'>
