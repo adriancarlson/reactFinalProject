@@ -25,7 +25,7 @@ const ShipList = () => {
 	};
 
 	const handleCreateShip = async () => {
-		const ship = await createShip({ title: 'New Ship', name: '', pilot: '', faction: '' });
+		const ship = await createShip({ title: 'New Ship', name: '', pilot: '', faction: '', icon: '' });
 		await reloadShips();
 		history.push(`/all/${ship._id}/edit`);
 	};
@@ -58,6 +58,9 @@ const ShipList = () => {
 						{ships.map((ship) => (
 							<Nav.Item key={ship._id}>
 								<Nav.Link as={NavLink} to={`${match.url}/${ship._id}`}>
+									<span className='icon-size me-3'>
+										<i className={`xwing-miniatures-ship xwing-miniatures-ship-${ship.icon}`}></i>
+									</span>
 									{ship.title}
 								</Nav.Link>
 							</Nav.Item>

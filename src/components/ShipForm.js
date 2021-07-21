@@ -6,13 +6,15 @@ const ShipForm = ({ ship, onDeleteShip, onUpdateShip }) => {
 	const [nameValue, setNameValue] = useState(ship.name);
 	const [pilotValue, setPilotValue] = useState(ship.pilot);
 	const [factionValue, setFactionValue] = useState(ship.faction);
+	const [iconValue, setIconValue] = useState(ship.icon);
 	const handleTitleChange = (e) => setTitleValue(e.target.value);
 	const handleNameChange = (e) => setNameValue(e.target.value);
 	const handlePilotChange = (e) => setPilotValue(e.target.value);
 	const handleFactionChange = (e) => setFactionValue(e.target.value);
+	const handleIconChange = (e) => setIconValue(e.target.value);
 
 	const handleSave = () => {
-		onUpdateShip(ship, { title: titleValue, name: nameValue, pilot: pilotValue, faction: factionValue });
+		onUpdateShip(ship, { title: titleValue, name: nameValue, pilot: pilotValue, faction: factionValue, icon: iconValue });
 	};
 
 	return (
@@ -47,6 +49,16 @@ const ShipForm = ({ ship, onDeleteShip, onUpdateShip }) => {
 						Faction:
 					</label>
 					<input type='text' id='factionInput' className='form-control' value={factionValue} onChange={handleFactionChange} />
+				</div>
+			</div>
+			<div className='row'>
+				<div className='col'>
+					<label htmlFor='iconInput' className='form-label mt-3'>
+						<span className='icon-size me-3'>
+							<i className={`xwing-miniatures-ship xwing-miniatures-ship-${ship.icon}`}></i>
+						</span>Icon:
+					</label>
+					<input type='text' id='iconInput' className='form-control' value={iconValue} onChange={handleIconChange} />
 				</div>
 			</div>
 			<div className='row'>

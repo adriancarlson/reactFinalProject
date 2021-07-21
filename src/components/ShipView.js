@@ -9,7 +9,12 @@ const ShipView = ({ ship }) => {
 		<React.Fragment>
 			<div className='row'>
 				<div className='col'>
-					<h2>{ship.title}</h2>
+					<h2>
+						<span className='icon-size me-3'>
+							<i className={`xwing-miniatures-ship xwing-miniatures-ship-${ship.icon}`}></i>
+						</span>
+						{ship.title}
+					</h2>
 				</div>
 				<div className='col-3'>
 					<Button variant='warning' as={Link} to={match.url + '/edit'} className='float-end'>
