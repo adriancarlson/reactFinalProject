@@ -42,12 +42,6 @@ function App() {
 									<strong> All Factions</strong>
 								</span>
 							</Nav.Link>
-							<Nav.Link as={NavLink} to='/empire'>
-								<span className='faction-icon-size'>
-									<i className='xwing-miniatures-font xwing-miniatures-font-empire'></i>
-									<strong> Galatic Empire</strong>
-								</span>
-							</Nav.Link>
 						</Nav.Item>
 					</Nav>
 				</div>
@@ -58,10 +52,7 @@ function App() {
 						<Home />
 					</Route>
 					<Route path='/all'>
-						<ShipList shipFilter='all' />
-					</Route>
-					<Route path='/empire'>
-						<ShipList shipFilter='empire' />
+						<ShipList />
 					</Route>
 					<Route path='/about'>
 						<About />
