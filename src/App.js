@@ -11,6 +11,7 @@ import About from './components/About';
 import Contact from './components/Contact';
 
 function App() {
+	
 	return (
 		<React.Fragment>
 			<Navbar collapseOnSelect expand='lg' bg='dark' variant='dark'>
@@ -41,6 +42,12 @@ function App() {
 									<strong> All Factions</strong>
 								</span>
 							</Nav.Link>
+							<Nav.Link as={NavLink} to='/empire'>
+								<span className='faction-icon-size'>
+									<i className='xwing-miniatures-font xwing-miniatures-font-empire'></i>
+									<strong> Galatic Empire</strong>
+								</span>
+							</Nav.Link>
 						</Nav.Item>
 					</Nav>
 				</div>
@@ -51,7 +58,10 @@ function App() {
 						<Home />
 					</Route>
 					<Route path='/all'>
-						<ShipList />
+						<ShipList shipFilter='all' />
+					</Route>
+					<Route path='/empire'>
+						<ShipList shipFilter='empire' />
 					</Route>
 					<Route path='/about'>
 						<About />
